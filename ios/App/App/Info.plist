@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>microblocks needs access to bluetooth</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app does not access your photo library. This entry is required because an included framework references photo APIs.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
