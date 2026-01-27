@@ -1,4 +1,4 @@
-package cn.kittenbot.mblock;
+package za.co.springbot.microblocks;
 
 import com.getcapacitor.BridgeActivity;
 
