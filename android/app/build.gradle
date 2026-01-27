@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "cn.kittenbot.mblock"
+    namespace "za.co.springbot.microblocks"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "cn.kittenbot.mblock"
+        applicationId "za.co.springbot.microblocks"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
