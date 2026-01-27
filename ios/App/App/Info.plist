@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>MicroBlocks</string>
+	<string>SpringBlocks</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>microblocks needs access to bluetooth</string>
+	<string>SpringBlocks needs access to bluetooth</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
