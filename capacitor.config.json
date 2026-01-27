@@ -1,6 +1,6 @@
 {
-  "appId": "cn.kittenbot.mblock",
-  "appName": "microblocks",
+  "appId": "za.co.springbot.microblocks",
+  "appName": "MicroBlocks",
   "webDir": "dist",
   "loggingBehavior": "none",
   "plugins": {
