@@ -1,6 +1,6 @@
 {
   "appId": "za.co.springbot.microblocks",
-  "appName": "MicroBlocks",
+  "appName": "SpringBlocks",
   "webDir": "dist",
   "loggingBehavior": "none",
   "plugins": {
