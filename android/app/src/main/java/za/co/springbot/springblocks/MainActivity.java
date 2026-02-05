@@ -1,4 +1,4 @@
-package za.co.springbot.microblocks;
+package za.co.springbot.springblocks;
 
 import com.getcapacitor.BridgeActivity;
 
