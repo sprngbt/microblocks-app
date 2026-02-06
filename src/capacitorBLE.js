@@ -36,6 +36,9 @@ class CapacitorBLESerial {
                 this.disconnect();
             });
 
+            //Slow down a bit
+            await new Promise(r => setTimeout(r, 200));
+            
             // Start notifications
             await this.bleClient.startNotifications(
                 this.device.deviceId,
@@ -78,34 +81,58 @@ class CapacitorBLESerial {
         return this.connected;
     }
 
-    write_data(data) {
-        if (!this.device || !this.connected) return 0;
-        if (this.sendInProgress) return 0;
+//     write_data(data) {
+//         if (!this.device || !this.connected) return 0;
+//         if (this.sendInProgress) return 0;
 
-        try {
-            this.sendInProgress = true;
+//         try {
+//             this.sendInProgress = true;
 
-            // Split data into chunks if needed
-            for (let i = 0; i < data.length; i += BLE_PACKET_LEN) {
-                const chunk = data.slice(i, Math.min(i + BLE_PACKET_LEN, data.length));
-                this.bleClient.writeWithoutResponse(
-                    this.device.deviceId,
-                    MICROBLOCKS_SERVICE_UUID,
-                    MICROBLOCKS_RX_CHAR_UUID,
-                    chunk
-                );
-            }
+//             // Split data into chunks if needed
+//             for (let i = 0; i < data.length; i += BLE_PACKET_LEN) {
+//                 const chunk = data.slice(i, Math.min(i + BLE_PACKET_LEN, data.length));
+//                 this.bleClient.writeWithoutResponse(
+//                     this.device.deviceId,
+//                     MICROBLOCKS_SERVICE_UUID,
+//                     MICROBLOCKS_RX_CHAR_UUID,
+//                     chunk
+//                 );
+//             }
 
-            this.sendInProgress = false;
-            return data.length;
-        } catch (error) {
-            console.error('BLE write error:', error);
-            this.sendInProgress = false;
-            if (!this.isConnected()) {
-                this.disconnect();
-            }
-            return 0;
-        }
+//             this.sendInProgress = false;
+//             return data.length;
+//         } catch (error) {
+//             console.error('BLE write error:', error);
+//             this.sendInProgress = false;
+//             if (!this.isConnected()) {
+//                 this.disconnect();
+//             }
+//             return 0;
+//         }
+//     }
+// }
+//Bjarke replacement
+async write_data(data) {
+  if (!this.device || !this.connected) return 0;
+  if (this.sendInProgress) return 0;
+
+  this.sendInProgress = true;
+  try {
+    for (let i = 0; i < data.length; i += BLE_PACKET_LEN) {
+      const chunk = data.slice(i, Math.min(i + BLE_PACKET_LEN, data.length));
+      await this.bleClient.writeWithoutResponse(
+        this.device.deviceId,
+        MICROBLOCKS_SERVICE_UUID,
+        MICROBLOCKS_RX_CHAR_UUID,
+        chunk
+      );
     }
+    return data.length;
+  } catch (error) {
+    console.error('BLE write error:', error);
+    return 0;
+  } finally {
+    this.sendInProgress = false;
+  }
 }
 window.CapacitorBLESerial = CapacitorBLESerial;
