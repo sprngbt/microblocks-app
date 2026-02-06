@@ -4,6 +4,7 @@ import fs from 'fs';
 
 export default defineConfig({
   root: './src',
+  base: './',
   build: {
     outDir: '../dist',
     minify: false,
