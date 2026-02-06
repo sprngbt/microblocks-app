@@ -4,7 +4,6 @@ import fs from 'fs';
 
 export default defineConfig({
   root: './src',
-  base: './',
   build: {
     outDir: '../dist',
     minify: false,
@@ -33,7 +32,7 @@ export default defineConfig({
       files.forEach(file => {
         try {
           fs.copyFileSync(
-            resolve(__dirname, `src/src/${file}`),
+            resolve(__dirname, `src/${file}`),
             resolve(__dirname, `dist/${file}`)
           );
           console.log(`Copied: ${file}`);
@@ -63,7 +62,7 @@ export default defineConfig({
       }
 
       // copy boardie directory
-      const srcBoardieDir = resolve(__dirname, 'src/src/boardie');
+      const srcBoardieDir = resolve(__dirname, 'src/boardie');
       const destBoardieDir = resolve(__dirname, 'dist/boardie');
       try {
         copyDir(srcBoardieDir, destBoardieDir);
