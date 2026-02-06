@@ -38,4 +38,23 @@
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+<!-- Legacy (older Android; harmless on 14, helps older devices) -->
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+<!-- Android 12+ (required on Android 14) -->
+<uses-permission
+    android:name="android.permission.BLUETOOTH_SCAN"
+    android:usesPermissionFlags="neverForLocation" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+<!-- Only if you advertise as a peripheral -->
+<!-- <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" /> -->
+
+<!-- Optional: if your BLE library still uses the “old” location-based scan path -->
+<!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+
+<!-- Optional but recommended -->
+<uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
 </manifest>
